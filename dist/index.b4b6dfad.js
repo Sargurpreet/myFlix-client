@@ -27180,7 +27180,7 @@ const MainView = ()=>{
             description: "Andy Dufresne (Tim Robbins) is sentenced to two consecutive life terms in prison for the murders of his wife and her lover and is sentenced to a tough prison. However, only Andy knows he didnt commit the crimes. ",
             genre: "Drama",
             director: "Frank Darabont",
-            imageURL: "https://en.wikipedia.org/wiki/The_Shawshank_Redemption#/media/File:ShawshankRedemptionMoviePoster.jpg",
+            imageURL: "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
             year: "1994"
         },
         {
@@ -27189,7 +27189,7 @@ const MainView = ()=>{
             description: "A depressed man (Edward Norton) suffering from insomnia meets a strange soap salesman named Tyler Durden (Brad Pitt) and soon finds himself living in his squalid house after his perfect apartment is destroyed.",
             genre: "Drama",
             director: "David Fincher",
-            imageURL: "https://en.wikipedia.org/wiki/Fight_Club#/media/File:Fight_Club_poster.jpg",
+            imageURL: "https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg",
             year: "1999"
         },
         {
@@ -27198,7 +27198,7 @@ const MainView = ()=>{
             description: "The first adventure in The Lord of the Rings trilogy!",
             genre: "Adventure",
             director: "Peter Jackson",
-            imageURL: "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings:_The_Fellowship_of_the_Ring#/media/File:The_Lord_of_the_Rings,_TFOTR_(2001).jpg",
+            imageURL: "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Lord_of_the_Rings%2C_TFOTR_%282001%29.jpg",
             year: "2001"
         }
     ]);
@@ -27235,7 +27235,7 @@ const MainView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "nOt+P3AKwum9isHQrQarO/iNCk4=");
+_s(MainView, "GRIPNZDKkURHJ8U84AkmPxHOiBY=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
