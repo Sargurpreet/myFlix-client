@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
-import { response } from "express";
+
 
 export const MainView = () => {
  
@@ -10,7 +10,7 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() =>{
-    fetch('https://sargur-movies-0649fa2ac873.herokuapp.com/movie')
+    fetch('https://sargur-movies-9fe33be3ebb3.herokuapp.com/')
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
