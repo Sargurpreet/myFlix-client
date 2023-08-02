@@ -10,7 +10,7 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() =>{
-    fetch('https://sargur-movies-9fe33be3ebb3.herokuapp.com/')
+    fetch('https://sargur-movies-9fe33be3ebb3.herokuapp.com/movie')
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
