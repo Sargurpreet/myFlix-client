@@ -27176,7 +27176,7 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        fetch("https://sargur-movies-9fe33be3ebb3.herokuapp.com/").then((response)=>response.json()).then((data)=>{
+        fetch("https://sargur-movies-9fe33be3ebb3.herokuapp.com/movie").then((response)=>response.json()).then((data)=>{
             console.log(data);
             const moviesFromApi = data.map((movie)=>{
                 return {
