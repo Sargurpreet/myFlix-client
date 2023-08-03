@@ -27264,7 +27264,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
     }, undefined);
 };
 _c = MovieCard;
-MovieCard.PropTypes = {
+MovieCard.prototype = {
     movie: (0, _propTypesDefault.default).shape({
         Title: (0, _propTypesDefault.default).string.isRequired
     }).isRequired,
@@ -28269,7 +28269,7 @@ const MovieView = ({ movie, onBackClick })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "Genre: "
+                        children: "Director: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 18,
@@ -28291,7 +28291,7 @@ const MovieView = ({ movie, onBackClick })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "Director: "
+                        children: "Genre: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 22,
@@ -28348,7 +28348,7 @@ const MovieView = ({ movie, onBackClick })=>{
     }, undefined);
 };
 _c = MovieView;
-MovieView.PropTypes = {
+MovieView.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
         ImagePath: (0, _propTypesDefault.default).string.isRequired,
         Title: (0, _propTypesDefault.default).string.isRequired,
