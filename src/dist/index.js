@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"8NWhe":[function(require,module,exports) {
+})({"6ahvF":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "022c1b16b4b6dfad";
+module.bundle.HMR_BUNDLE_ID = "10485a0f0d6fcb10";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -27264,7 +27264,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
     }, undefined);
 };
 _c = MovieCard;
-MovieCard.prototype = {
+MovieCard.PropTypes = {
     movie: (0, _propTypesDefault.default).shape({
         Title: (0, _propTypesDefault.default).string.isRequired
     }).isRequired,
@@ -28269,7 +28269,7 @@ const MovieView = ({ movie, onBackClick })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "Director: "
+                        children: "Genre: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 18,
@@ -28291,7 +28291,7 @@ const MovieView = ({ movie, onBackClick })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "Genre: "
+                        children: "Director: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 22,
@@ -28348,7 +28348,7 @@ const MovieView = ({ movie, onBackClick })=>{
     }, undefined);
 };
 _c = MovieView;
-MovieView.propTypes = {
+MovieView.PropTypes = {
     movie: (0, _propTypesDefault.default).shape({
         ImagePath: (0, _propTypesDefault.default).string.isRequired,
         Title: (0, _propTypesDefault.default).string.isRequired,
@@ -28371,6 +28371,6 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","prop-types":"7wKI2","@parcel/transformer-js/src/esmodule-helpers.js":"hcetK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fAWcd"}],"lJZlQ":[function() {},{}]},["8NWhe","3Avmw","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","prop-types":"7wKI2","@parcel/transformer-js/src/esmodule-helpers.js":"hcetK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fAWcd"}],"lJZlQ":[function() {},{}]},["6ahvF","3Avmw","d8Dch"], "d8Dch", "parcelRequireaec4")
 
-//# sourceMappingURL=index.b4b6dfad.js.map
+//# sourceMappingURL=index.js.map
