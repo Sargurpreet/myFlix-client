@@ -27183,7 +27183,7 @@ const MainView = ()=>{
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     (0, _react.useEffect)(()=>{
         if (!token) return;
-        fetch("https://sargur-movies-9fe33be3ebb3.herokuapp.com", {
+        fetch("https://sargur-movies-9fe33be3ebb3.herokuapp.com/movie", {
             headers: {
                 Authorization: `Bearer ${token}`
             }

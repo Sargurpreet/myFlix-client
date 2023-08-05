@@ -20,7 +20,7 @@ export const MainView = () => {
       return;
     }
 
-    fetch('https://sargur-movies-9fe33be3ebb3.herokuapp.com', {
+    fetch('https://sargur-movies-9fe33be3ebb3.herokuapp.com/movie', {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then((response) => response.json())
