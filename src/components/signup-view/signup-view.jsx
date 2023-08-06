@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button'
 
 export const SignupView = () => {
   const [name, setName] = useState("");
@@ -43,6 +45,51 @@ export const SignupView = () => {
   }
 
   return (
+
+    <Form onSubmit={handleSubmit}>
+      <Form.Group controlId="formName">
+        <Form.Label>Name: </Form.Label>
+        <Form.Control
+        type="text"
+        value={name}
+        onChange={(e) =>
+        setName(e.target.value)}
+        required />
+      </Form.Group>
+      <Form.Group controlId="formPassword">
+        <Form.Label>Password: </Form.Label>
+        <Form.Control
+        type="password"
+        value={password}
+        onChange={(e) =>
+        setPassword(e.target.value)}
+        required />
+      </Form.Group>
+      <Form.Group controlId="formEmail">
+        <Form.Label>Email: </Form.Label>
+        <Form.Control
+        type="text"
+        value={email}
+        onChange={(e) =>
+        setEmail(e.target.value)}
+        required />
+      </Form.Group>
+      <Form.Group controlId="formBirthday">
+        <Form.Label>Birthday: </Form.Label>
+        <Form.Control
+        type="text"
+        value={birthday}
+        onChange={(e) =>
+        setBirthday(e.target.value)}
+        required />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
+    
+
+    /*
     <form onSubmit={handleSubmit}>
       <label>
         Name:
@@ -83,6 +130,9 @@ export const SignupView = () => {
       </label>
       <button type="sumbit">Sumbit</button>
     </form>
+
+    */
+
   );
 
 }
