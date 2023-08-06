@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
+import '../movie-card/movie-card.scss'
 
 export const MovieCard = ({ movie, onMovieClick }) => {
   console.log('Movie:', movie);
@@ -7,13 +8,13 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 
   return (
     <Card>
-      <Card.Img variant='top' src={movie.ImagePath} alt={movie.Title} style={{width:'300px', height: '450px'}}/>
+      <Card.Img variant='top' src={movie.ImagePath} alt={movie.Title} style={{width:'100%', height: '450px'}}/>
       <Card.Body>
-        <Card.Title>{movie.Title}</Card.Title>
-        <Card.Text>{movie.Director.Name}</Card.Text>
         <Button onClick={() => onMovieClick(movie)} variant='link'>
-          Open
+        <Card.Title>{movie.Title}</Card.Title>
         </Button>
+        <Card.Text>{movie.Director.Name}</Card.Text>
+        <Card.Text>{movie.Genre.Name}</Card.Text>
       </Card.Body>
     </Card>
   );
