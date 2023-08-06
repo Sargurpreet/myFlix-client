@@ -13180,7 +13180,7 @@ textarea.form-control-lg {
 }
 
 .main-view .login-signup {
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   margin-top: 20px;
   display: flex;
 }
