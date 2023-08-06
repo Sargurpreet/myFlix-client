@@ -11,7 +11,7 @@ export const SignupView = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = {
+    const data = {  
       Name: name,
       Password: password,
       Email: email,
