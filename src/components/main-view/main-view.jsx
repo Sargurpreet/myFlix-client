@@ -6,6 +6,7 @@ import { SignupView } from "../signup-view/signup-view";
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import '../main-view/main-view.scss'
 
 
 export const MainView = () => {
@@ -53,10 +54,12 @@ export const MainView = () => {
 
 
   return (
-    
-<Row className="justify-content-md-center">
+
+    <div className="main-view">
+      
+    <Row className="justify-content-md-center">
       {!user ? (
-        <Col md = {4}>
+        <Col md = {4} className="login-signup">
         <LoginView 
         onLoogedIn={(user,token) => {
           setUser(user);
@@ -67,18 +70,18 @@ export const MainView = () => {
         <SignupView />
         </Col>
       ) : selectedMovie ? (
-        <Col md = {8}>
+        <Col md = {8} className="movie-detail">
         <MovieView 
         movie={selectedMovie}
         onBackClick={() =>
         setSelectedMovie(null) } />
         </Col>
       ) : movies.length === 0 ? (
-        <div>The list is empty!</div>
+        <div className="empty-list">The list is empty!</div>
       ) : (
-        <>
+        <div className="movie-list">
         {movies.map((movie)=> (
-          <Col>
+          <Col key={movie._id} className="movie-card">
           <MovieCard
           key={movie.id}
           movie={movie}
@@ -87,16 +90,23 @@ export const MainView = () => {
           }} />
           </Col>
         ))}
-        <Button onClick={() => {
+        <div className=""logout-container>
+          <Button onClick={() => {
           setUser(null);
           setToken(null);
           localStorage.clear();
         }}>
           Logout
         </Button>
-        </>
+        </div>
+        </div>
       )}
     </Row>
+
+    </div> 
+
+
+
   )
 
 };

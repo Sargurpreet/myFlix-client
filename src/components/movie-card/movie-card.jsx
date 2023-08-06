@@ -7,7 +7,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 
   return (
     <Card>
-      <Card.Img variant='top' src={movie.ImagePath} />
+      <Card.Img variant='top' src={movie.ImagePath} alt={movie.Title} style={{width:'300px', height: '450px'}}/>
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
         <Card.Text>{movie.Director.Name}</Card.Text>
