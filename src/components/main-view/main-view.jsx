@@ -58,6 +58,15 @@ export const MainView = () => {
     <div className="main-view">
       
     <Row className="justify-content-md-center">
+    <div className="logout-container">
+          <Button onClick={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}>
+          Logout
+        </Button>
+        </div>
       {!user ? (
         <Col md = {4} className="login-signup">
         <LoginView 
@@ -90,15 +99,6 @@ export const MainView = () => {
           }} />
           </Col>
         ))}
-        <div className=""logout-container>
-          <Button onClick={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}>
-          Logout
-        </Button>
-        </div>
         </div>
       )}
     </Row>

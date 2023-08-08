@@ -19,6 +19,8 @@
     }
   }
 
+
+
   .movie-list {
     display: flex;
     flex-wrap: wrap;
@@ -34,7 +36,7 @@
   .logout-container {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     margin-top: auto;
     margin-bottom: 20px;
   }

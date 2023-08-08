@@ -26426,7 +26426,7 @@ textarea.form-control-lg {
 }
 
 .main-view .logout-container {
-  justify-content: center;
+  justify-content: right;
   width: 100%;
   margin-top: auto;
   margin-bottom: 20px;
