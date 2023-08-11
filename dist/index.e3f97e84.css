@@ -26441,6 +26441,33 @@ textarea.form-control-lg {
   margin-bottom: 10px;
 }
 
+.profile-view {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.profile-form {
+  margin-bottom: 20px;
+}
+
+.profile-form label {
+  font-weight: bold;
+}
+
+.profile-form .btn-primary {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
 .my-flix {
   color: #4682b4;
 }

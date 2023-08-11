@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button'
 import {BrowserRouter, Routes, Route, Navigate, Fragment} from 'react-router-dom';
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import '../main-view/main-view.scss'
+import { ProfileView } from "../profile-view/profile-view";
 
 
 export const MainView = () => {
@@ -19,6 +20,12 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(storedUser? storedUser:null);
   const [token, setToken] = useState(storedToken? storedToken:null);
+
+  const onLogout = () => {
+    setUser(null);
+    setToken(null);
+    localStorage.clear();
+  }
 
   useEffect(() =>{
 
@@ -123,6 +130,26 @@ export const MainView = () => {
                 )}
               </>
             }
+          />
+          <Route 
+          path="/profile"
+          element={
+            <>
+            {!user ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <Col>
+                <ProfileView
+                user={user}
+                token={token}
+                setUser={setUser}
+                movies={movies}
+                onLogout={onLogout} 
+                />
+              </Col>
+            )}
+            </>
+          }
           />
           <Route
                     path="/movie/:Title"

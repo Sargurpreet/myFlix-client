@@ -9,15 +9,18 @@ export const MovieCard = ({ movie }) => {
 
   return (
     <Card >
+      <Link to={`/movie/${encodeURIComponent(movie._id)}`}>
       <Card.Img variant='top' src={movie.ImagePath}  style={{width:'100%', height: '450px'}}/>
-      <Card.Body>      
-        <Card.Title>{movie.Title}</Card.Title>
-        <Card.Text>{movie.Genre.Name}</Card.Text>
-        <Link to={`/movie/${encodeURIComponent(movie._id)}`}>
-        <Button variant="link">
-          Open
-        </Button>
       </Link>
+      <Card.Body>      
+        <Link to={`/movie/${encodeURIComponent(movie._id)}`}>
+          <Button variant="link">
+            <Card.Title>{movie.Title}</Card.Title>
+          </Button>        
+        </Link>
+        <Card.Text>{movie.Genre.Name}</Card.Text>
+        
+      
       </Card.Body>
     </Card>
   );
