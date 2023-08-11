@@ -1,20 +1,23 @@
 import PropTypes from 'prop-types';
-import { Card, Button } from 'react-bootstrap';
-import '../movie-card/movie-card.scss'
+import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import '../movie-card/movie-card.scss';
 
-export const MovieCard = ({ movie, onMovieClick }) => {
+export const MovieCard = ({ movie }) => {
   console.log('Movie:', movie);
-  console.log('Director:', movie.Director);
 
   return (
-    <Card>
-      <Card.Img variant='top' src={movie.ImagePath} alt={movie.Title} style={{width:'100%', height: '450px'}}/>
-      <Card.Body>
-        <Button onClick={() => onMovieClick(movie)} variant='link'>
+    <Card >
+      <Card.Img variant='top' src={movie.ImagePath}  style={{width:'100%', height: '450px'}}/>
+      <Card.Body>      
         <Card.Title>{movie.Title}</Card.Title>
-        </Button>
-        <Card.Text>{movie.Director.Name}</Card.Text>
         <Card.Text>{movie.Genre.Name}</Card.Text>
+        <Link to={`/movie/${encodeURIComponent(movie._id)}`}>
+        <Button variant="link">
+          Open
+        </Button>
+      </Link>
       </Card.Body>
     </Card>
   );
@@ -22,12 +25,15 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
+    Title: PropTypes.string,
+    Description: PropTypes.string,
     Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-    }).isRequired, 
-    ImagePath: PropTypes.string.isRequired,
+      Name: PropTypes.string
+    }),
+    Genre: PropTypes.shape({
+      Name: PropTypes.string 
+    }),
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired,
 };
+
 
