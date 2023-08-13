@@ -7,8 +7,57 @@ import { Link } from "react-router-dom";
 
 export const MovieView = ({ movies, user, setUser, token }) => {
   const { movieId } = useParams();
-  const movie = movies.find((m) => m.id === movieId);
+  const [isFavorite, setIsFavorite] = useState(false);
+  
+  useEffect(() => {
+    const isFavorited = user.FavoriteMovies.includes(movieId)
+    setIsFavorite(isFavorited)
+  }, []);
+  
+  const removeFavorite = () => {
+    fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}/${movieId}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      }
+    })
+    .then((response) => {
+      if(response.ok) {
+        return response.json()
+      }
+    }). then((data) => {
+      setIsFavorite(false);
+      localStorage.setItem("user", JSON.stringify(data));
+      setUser(data);
+    })
+  };
+  
+  const addToFavorite = () => {
+    fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}/${movieId}`, {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      }
+    })
+    .then((response) => {
+      if(response.ok) {
+        return response.json()
+      }
+    }). then((data) => {
+      setIsFavorite(true);
+      localStorage.setItem("user", JSON.stringify(data));
+      setUser(data);
+    })
+  }
+  
+  const movie = movies.find((m) => m._id === movieId);
 
+  if(!movie) {
+    return <div>Movi not found</div>
+  }
+  
   return (
     <div className="movie-view">
       <div className="movie-image">
@@ -35,7 +84,14 @@ export const MovieView = ({ movies, user, setUser, token }) => {
           <span>Featured: </span>
           <span>{movie.Featured ? "Yes" : "No"}</span>
         </div>
+        
       </div>
+
+      {isFavorite ? (
+        <Button onClick={removeFavorite}>Remove from favorites</Button>
+      ) : (
+        <Button onClick={addToFavorite}>Add to favorites</Button>
+      )}
 
       <Link to={"/"}>
         <Button className="back-button">Back</Button>
@@ -43,3 +99,4 @@ export const MovieView = ({ movies, user, setUser, token }) => {
     </div>
   );
 };
+

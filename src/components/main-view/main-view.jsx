@@ -12,14 +12,15 @@ import '../main-view/main-view.scss'
 import { ProfileView } from "../profile-view/profile-view";
 
 
-export const MainView = () => {
+export const MainView = () => { 
+  const storedUser = JSON.parse(localStorage.getItem("User"));
   const storedToken = localStorage.getItem("token");
-  const storedUser = JSON.parse(localStorage.getItem("user")); 
-  const [movies, setMovies] = useState([]);
 
-  const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(storedUser? storedUser:null);
   const [token, setToken] = useState(storedToken? storedToken:null);
+  const [movies, setMovies] = useState([]);
+  
+  
 
   const onLogout = () => {
     setUser(null);
@@ -28,7 +29,6 @@ export const MainView = () => {
   }
 
   useEffect(() =>{
-
     if(!token) {
       return;
     }
@@ -41,7 +41,7 @@ export const MainView = () => {
       console.log(data);
       const moviesFromApi = data.map((movie) => {
         return {
-          _id: movie.id,
+          _id: movie._id,
           Title: movie.Title,
           Description: movie.Description,
           Director: {
@@ -60,7 +60,6 @@ export const MainView = () => {
       console.error("Error fetching: ", error);
     });
   }, [token]);
-
 
   return (
     <BrowserRouter>
@@ -143,8 +142,8 @@ export const MainView = () => {
                 user={user}
                 token={token}
                 setUser={setUser}
-                movies={movies}
-                onLogout={onLogout} 
+                movie={movies}
+                onLogout={onLogout}                 
                 />
               </Col>
             )}
@@ -152,29 +151,38 @@ export const MainView = () => {
           }
           />
           <Route
-                    path="/movie/:Title"
-                    element={
-                        <>
-                        {!user ? (
-                            <Navigate to="/login" replace />
-                        ) : movies.length === 0 ? (
-                            <Col>This list is empty!</Col>
-                        ) : (
-                            <Col md={8} >
-                                <MovieView
-                                    key={movies._id}
-                                    movies={movies}
-                                    user={user}
-                                    setUser={setUser}
-                                    token={token}
-                                />
-                            </Col>
-                        )}
-                        </>
-                    }
+            path="/movie/:movieId"
+            element={
+              <>
+              {!user ? (
+                <Navigate to="/login" replace />
+                 ) : movies.length === 0 ? (
+                  <Col>This list is empty!</Col>
+                 ) : (
+                  <Col md={8} >
+                    <MovieView
+                      key={movies._id}
+                      movies={movies}
+                      user={user}
+                      setUser={setUser}
+                      token={token}                                 
                     />
+                  </Col>
+                )}
+              </>
+            }
+          />
           
         </Routes>
+        {user && (
+          <Col md={1}>
+            <Button 
+            variant="secondary"
+            onClick={onLogout}>
+              Logout
+            </Button>
+          </Col>
+        )}
         
       </Row>  
       

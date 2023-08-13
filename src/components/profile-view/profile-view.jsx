@@ -3,12 +3,16 @@ import { Button, Col, Form, Row, Modal } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
 import "../profile-view/profile-view.scss"
 
-export const ProfileView = ({ user, token, setUser, movies, onLogout }) => {
+export const ProfileView = ({ user, token, setUser }) => {
   const [name, setName] = useState(user.Name);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.BirthDate);
   const [showModal, setShowModal] = useState(false);
+  const favoriteMovies = movies.filter((movie) => {
+    return user.FavoriteMovies.includes(movie)
+  });
+  
 
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
@@ -59,6 +63,8 @@ export const ProfileView = ({ user, token, setUser, movies, onLogout }) => {
         }
       });
   };
+
+
 
   return (
     <div className="profile-view">
@@ -114,13 +120,22 @@ export const ProfileView = ({ user, token, setUser, movies, onLogout }) => {
           <div className="d-flex justify-content-between mt-4">
             <Button variant="primary" type="submit">
               Save changes
-            </Button>          
+            </Button>                     
             <Button variant="primary" onClick={handleShowModal}>
               Delete my account
             </Button>
           </div>
         </Form>
       </Row>
+      <Row>
+        <h3>Favorite movies:</h3>
+        {favoriteMovies.map((movie) => (
+        <Col className="mb-5" key={movie._id} md={4}>
+          <MovieCard  movie={movie}></MovieCard>
+        </Col>
+        ))}
+      </Row>
+
       </div>
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
