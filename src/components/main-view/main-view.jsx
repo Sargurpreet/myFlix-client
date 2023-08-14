@@ -13,10 +13,11 @@ import { ProfileView } from "../profile-view/profile-view";
 
 
 export const MainView = () => { 
-  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedUser = localStorage.getItem("user");
+  const parsedUser = storedUser ? JSON.parse(storedUser) : null;
   const storedToken = localStorage.getItem("token");
 
-  const [user, setUser] = useState(storedUser? storedUser:null);
+  const [user, setUser] = useState(parsedUser ? parsedUser : null);
   const [token, setToken] = useState(storedToken? storedToken:null);
   const [movies, setMovies] = useState([]);
   
@@ -130,26 +131,6 @@ export const MainView = () => {
               </>
             }
           />
-          <Route 
-          path="/profile"
-          element={
-            <>
-            {!user ? (
-              <Navigate to="/login" replace />
-            ) : (
-              <Col>
-                <ProfileView
-                user={user}
-                token={token}
-                setUser={setUser}
-                movies={movies}
-                onLogout={onLogout}                 
-                />
-              </Col>
-            )}
-            </>
-          }
-          />
           <Route
             path="/movie/:movieId"
             element={
@@ -171,6 +152,26 @@ export const MainView = () => {
                 )}
               </>
             }
+          />
+          <Route 
+          path="/profile"
+          element={
+            <>
+            {!user ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <Col>
+                <ProfileView
+                user={user}
+                token={token}
+                setUser={setUser}
+                movie={movies}
+                onLogout={onLogout}                 
+                />
+              </Col>
+            )}
+            </>
+          }
           />
           
         </Routes>

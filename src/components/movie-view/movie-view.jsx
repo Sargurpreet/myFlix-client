@@ -10,7 +10,7 @@ export const MovieView = ({ movies, user, setUser, token }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   
   useEffect(() => {
-    const isFavorited = user.FavoriteMovies.includes(movieId)
+    const isFavorited = user && user.FavoriteMovies && user.FavoriteMovies.includes(movieId);
     setIsFavorite(isFavorited)
   }, []);
   
@@ -35,7 +35,7 @@ export const MovieView = ({ movies, user, setUser, token }) => {
   
   const addToFavorite = () => {
     fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}/movie/${movieId}`, {
-      method: 'PUT',
+      method: 'POST',
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,

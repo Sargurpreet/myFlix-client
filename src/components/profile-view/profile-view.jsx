@@ -27,6 +27,8 @@ export const ProfileView = ({ user, token, setUser }) => {
       BirthDate: birthday,
     };
 
+    
+
     fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}`, {
       method: "PUT",
       body: JSON.stringify(data),
