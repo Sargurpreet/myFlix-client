@@ -27320,8 +27320,8 @@ const MainView = ()=>{
                                                 md: 4,
                                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                                     movie: movie
-                                                }, movie._id, false, void 0, void 0)
-                                            }, void 0, false, void 0, void 0))
+                                                }, void 0, false, void 0, void 0)
+                                            }, movie._id, false, void 0, void 0))
                                     }, void 0, false)
                                 }, void 0, false)
                             }, void 0, false, {
@@ -27363,9 +27363,9 @@ const MainView = ()=>{
                                             user: user,
                                             token: token,
                                             setUser: setUser,
-                                            movie: movies,
+                                            movies: movies,
                                             onLogout: onLogout
-                                        }, void 0, false, void 0, void 0)
+                                        }, movies._id, false, void 0, void 0)
                                     }, void 0, false, void 0, void 0)
                                 }, void 0, false)
                             }, void 0, false, {
@@ -27387,12 +27387,12 @@ const MainView = ()=>{
                             children: "Logout"
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 180,
+                            lineNumber: 181,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 179,
+                        lineNumber: 180,
                         columnNumber: 11
                     }, undefined)
                 ]
