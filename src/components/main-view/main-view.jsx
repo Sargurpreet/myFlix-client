@@ -140,7 +140,7 @@ export const MainView = () => {
                  ) : movies.length === 0 ? (
                   <Col>This list is empty!</Col>
                  ) : (
-                  <Col md={8} >
+                  <Col>
                     <MovieView
                       key={movies._id}
                       movies={movies}
@@ -176,19 +176,8 @@ export const MainView = () => {
           />
           
         </Routes>
-        {user && (
-          <Col md={1}>
-            <Button 
-            variant="secondary"
-            onClick={onLogout}>
-              Logout
-            </Button>
-          </Col>
-        )}
         
-      </Row>  
-      
-
+      </Row>       
 
     </BrowserRouter>
 

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import "../movie-view/movie-view.scss";
 
 
 export const MovieView = ({ movies, user, setUser, token }) => {
@@ -87,6 +88,7 @@ export const MovieView = ({ movies, user, setUser, token }) => {
         
       </div>
 
+      <div className='button-container'>
       {isFavorite ? (
         <Button onClick={removeFavorite}>Remove from favorites</Button>
       ) : (
@@ -96,6 +98,7 @@ export const MovieView = ({ movies, user, setUser, token }) => {
       <Link to={"/"}>
         <Button className="back-button">Back</Button>
       </Link>
+      </div>
     </div>
   );
 };

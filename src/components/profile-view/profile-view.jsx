@@ -3,15 +3,16 @@ import { Button, Col, Form, Row, Modal } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
 import "../profile-view/profile-view.scss"
 
-export const ProfileView = ({ user, token, setUser }) => {
+export const ProfileView = ({ user, token, setUser, movies }) => {
   const [name, setName] = useState(user.Name);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.BirthDate);
   const [showModal, setShowModal] = useState(false);
   const favoriteMovies = movies.filter((movie) => {
-    return user.FavoriteMovies.includes(movie)
+    return user.FavoriteMovies && user.FavoriteMovies.includes(movie)
   });
+  console.log("Favorite Movies:", user.FavoriteMovies);
   
 
   const handleShowModal = () => setShowModal(true);
@@ -158,3 +159,4 @@ export const ProfileView = ({ user, token, setUser }) => {
     </div>
   );
 };
+
