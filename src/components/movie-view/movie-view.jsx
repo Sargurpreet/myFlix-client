@@ -15,7 +15,7 @@ export const MovieView = ({ movies, user, setUser, token }) => {
   }, []);
   
   const removeFavorite = () => {
-    fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}/${movieId}`, {
+    fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}/movie/${movieId}`, {
       method: 'DELETE',
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +34,7 @@ export const MovieView = ({ movies, user, setUser, token }) => {
   };
   
   const addToFavorite = () => {
-    fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}/${movieId}`, {
+    fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}/movie/${movieId}`, {
       method: 'PUT',
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ export const MovieView = ({ movies, user, setUser, token }) => {
   const movie = movies.find((m) => m._id === movieId);
 
   if(!movie) {
-    return <div>Movi not found</div>
+    return <div>Movie not found</div>
   }
   
   return (

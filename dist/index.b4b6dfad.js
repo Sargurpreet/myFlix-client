@@ -27194,7 +27194,7 @@ var _profileView = require("../profile-view/profile-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const storedUser = JSON.parse(localStorage.getItem("User"));
+    const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
@@ -27339,7 +27339,7 @@ const MainView = ()=>{
                                             user: user,
                                             token: token,
                                             setUser: setUser,
-                                            movie: movies,
+                                            movies: movies,
                                             onLogout: onLogout
                                         }, void 0, false, void 0, void 0)
                                     }, void 0, false, void 0, void 0)
@@ -35593,7 +35593,7 @@ const MovieView = ({ movies, user, setUser, token })=>{
         setIsFavorite(isFavorited);
     }, []);
     const removeFavorite = ()=>{
-        fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}/${movieId}`, {
+        fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}/movie/${movieId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -35608,7 +35608,7 @@ const MovieView = ({ movies, user, setUser, token })=>{
         });
     };
     const addToFavorite = ()=>{
-        fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}/${movieId}`, {
+        fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}/movie/${movieId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -35624,7 +35624,7 @@ const MovieView = ({ movies, user, setUser, token })=>{
     };
     const movie = movies.find((m)=>m._id === movieId);
     if (!movie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: "Movi not found"
+        children: "Movie not found"
     }, void 0, false, {
         fileName: "src/components/movie-view/movie-view.jsx",
         lineNumber: 58,
