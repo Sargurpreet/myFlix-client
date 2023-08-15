@@ -7,13 +7,13 @@ export const ProfileView = ({ user, token, setUser, movies }) => {
   const [name, setName] = useState(user.Name);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.Email);
-  const [birthday, setBirthday] = useState(user.BirthDate);
+  const [birthday, setBirthday] = useState(user.Birthday);
   const [showModal, setShowModal] = useState(false);
   const favoriteMovies = movies.filter((movie) => {
-    return user.FavoriteMovies && user.FavoriteMovies.includes(movie)
+    return user.FavoriteMovies.includes(movie._id)
   });
   console.log("Favorite Movies:", user.FavoriteMovies);
-  
+    
 
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
@@ -25,7 +25,7 @@ export const ProfileView = ({ user, token, setUser, movies }) => {
       Name: name,
       Password: password,
       Email: email,
-      BirthDate: birthday,
+      Birthday: birthday,
     };
 
     
@@ -77,6 +77,7 @@ export const ProfileView = ({ user, token, setUser, movies }) => {
         <Col>
           <div>Name: {user.Name}</div>
           <div>Email: {user.Email}</div>
+          <div>Birthday: {user.Birthday ? new Date(user.Birthday).toISOString().split('T')[0] : ''}</div>
         </Col>
       </Row>
       <Row>
@@ -133,12 +134,11 @@ export const ProfileView = ({ user, token, setUser, movies }) => {
       <Row>
         <h3>Favorite movies:</h3>
         {favoriteMovies.map((movie) => (
-        <Col className="mb-5" key={movie._id} md={4}>
-          <MovieCard  movie={movie}></MovieCard>
+        <Col className="mb-5" key={movie._id} md={6}>
+          <MovieCard  movie={movie} user={user}></MovieCard>
         </Col>
         ))}
       </Row>
-
       </div>
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
