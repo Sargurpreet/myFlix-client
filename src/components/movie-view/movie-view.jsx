@@ -7,10 +7,11 @@ import "../movie-view/movie-view.scss";
 import { useSelector } from 'react-redux';
 
 
-export const MovieView = ({ movies, user, setUser, token }) => {
+export const MovieView = ({ movieList, user, setUser, token }) => {
   const { movieId } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
   const movies = useSelector((state) => state.movies);
+  
   
   useEffect(() => {
     const isFavorited = user && user.FavoriteMovies && user.FavoriteMovies.includes(movieId);
@@ -55,7 +56,7 @@ export const MovieView = ({ movies, user, setUser, token }) => {
     })
   }
   
-  const movie = movies.find((m) => m._id === movieId);
+  const movie = movieList.find((m) => m._id === movieId);
 
   if(!movie) {
     return <div>Movie not found</div>

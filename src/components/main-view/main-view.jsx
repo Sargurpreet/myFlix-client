@@ -60,7 +60,8 @@ export const MainView = () => {
           Featured: movie.Featured.toString()    
         };
       });
-      dispatch(setMovies(moviesFromApi));
+      dispatch(setMovies({list: moviesFromApi}));
+      console.log("Redux State:", movies);
     })
     .catch((error) => {
       console.error("Error fetching: ", error);
@@ -126,11 +127,15 @@ export const MainView = () => {
                   <Col>This list is empty!</Col>
                 ) : (
                   <>
-                    {movies.map((movie) => (
-                      <Col className="mb-5" md={4} key={movie._id}>
-                        <MovieCard movie={movie} />
-                      </Col>
-                    ))}
+                    {movies.map((movie) => {
+                      return (
+                        (
+                          <Col className="mb-5" md={4} key={movie._id}>
+                            <MovieCard movie={movie} />
+                          </Col>
+                        ))}
+                      )
+                    }
                   </>
                 )}
               </>
@@ -147,6 +152,7 @@ export const MainView = () => {
                  ) : (
                   <Col>
                     <MovieView
+                      movieList={movies}
                       user={user}
                       setUser={setUser}
                       token={token}                                 
