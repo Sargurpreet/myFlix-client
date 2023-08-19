@@ -4,11 +4,13 @@ import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import "../movie-view/movie-view.scss";
+import { useSelector } from 'react-redux';
 
 
 export const MovieView = ({ movies, user, setUser, token }) => {
   const { movieId } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
+  const movies = useSelector((state) => state.movies);
   
   useEffect(() => {
     const isFavorited = user && user.FavoriteMovies && user.FavoriteMovies.includes(movieId);

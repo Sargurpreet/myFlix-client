@@ -10,6 +10,8 @@ import {BrowserRouter, Routes, Route, Navigate, Fragment} from 'react-router-dom
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import '../main-view/main-view.scss'
 import { ProfileView } from "../profile-view/profile-view";
+import { useSelector, useDispatch } from "react-redux";
+import { setMovies } from "../../redux/reducers/movies";
 
 
 export const MainView = () => { 
@@ -19,7 +21,10 @@ export const MainView = () => {
 
   const [user, setUser] = useState(parsedUser ? parsedUser : null);
   const [token, setToken] = useState(storedToken? storedToken:null);
-  const [movies, setMovies] = useState([]);
+  const movies = useSelector((state) => {
+    return state.movies.list;
+  });
+  const dispatch = useDispatch();
   
   
 
@@ -55,7 +60,7 @@ export const MainView = () => {
           Featured: movie.Featured.toString()    
         };
       });
-      setMovies(moviesFromApi);
+      dispatch(setMovies(moviesFromApi));
     })
     .catch((error) => {
       console.error("Error fetching: ", error);
@@ -142,8 +147,6 @@ export const MainView = () => {
                  ) : (
                   <Col>
                     <MovieView
-                      key={movies._id}
-                      movies={movies}
                       user={user}
                       setUser={setUser}
                       token={token}                                 
