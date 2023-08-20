@@ -27242,9 +27242,7 @@ const MainView = ()=>{
                     Featured: movie.Featured.toString()
                 };
             });
-            dispatch((0, _movies.setMovies)({
-                list: moviesFromApi
-            }));
+            dispatch((0, _movies.setMovies)(moviesFromApi));
             console.log("Redux State:", movies);
         }).catch((error)=>{
             console.error("Error fetching: ", error);
@@ -35596,7 +35594,6 @@ const MovieView = ({ movieList, user, setUser, token })=>{
     _s();
     const { movieId } = (0, _reactRouter.useParams)();
     const [isFavorite, setIsFavorite] = (0, _react.useState)(false);
-    const movies = (0, _reactRedux.useSelector)((state)=>state.movies);
     (0, _react.useEffect)(()=>{
         const isFavorited = user && user.FavoriteMovies && user.FavoriteMovies.includes(movieId);
         setIsFavorite(isFavorited);
@@ -35822,10 +35819,9 @@ const MovieView = ({ movieList, user, setUser, token })=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MovieView, "IquRZet/nh+RvRU7S2shZPNkqas=", false, function() {
+_s(MovieView, "Eu5S1baMK/gY/xYLj5Nss4rVVBI=", false, function() {
     return [
-        (0, _reactRouter.useParams),
-        (0, _reactRedux.useSelector)
+        (0, _reactRouter.useParams)
     ];
 });
 _c = MovieView;
@@ -35837,7 +35833,7 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","prop-types":"7wKI2","react":"21dqq","react-bootstrap/Button":"aPzUt","react-router":"dbWyW","react-router-dom":"9xmpe","../movie-view/movie-view.scss":"jnlR5","@parcel/transformer-js/src/esmodule-helpers.js":"hcetK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fAWcd","react-redux":"bdVon"}],"jnlR5":[function() {},{}],"bdVon":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","prop-types":"7wKI2","react":"21dqq","react-bootstrap/Button":"aPzUt","react-router":"dbWyW","react-router-dom":"9xmpe","../movie-view/movie-view.scss":"jnlR5","react-redux":"bdVon","@parcel/transformer-js/src/esmodule-helpers.js":"hcetK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fAWcd"}],"jnlR5":[function() {},{}],"bdVon":[function(require,module,exports) {
 // The primary entry point assumes we're working with standard ReactDOM/RN, but
 // older versions that do not include `useSyncExternalStore` (React 16.9 - 17.x).
 // Because of that, the useSyncExternalStore compat shim is needed.
@@ -49663,7 +49659,7 @@ const moviesSlice = (0, _toolkit.createSlice)({
     },
     reducers: {
         setMovies: (state, action)=>{
-            state.movies = action.payload;
+            state.list = action.payload;
         },
         setFilter: (state, action)=>{
             state.filter = action.payload;

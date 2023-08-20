@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 export const MovieView = ({ movieList, user, setUser, token }) => {
   const { movieId } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
-  const movies = useSelector((state) => state.movies);
+  
   
   
   useEffect(() => {

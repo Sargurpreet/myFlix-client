@@ -60,7 +60,7 @@ export const MainView = () => {
           Featured: movie.Featured.toString()    
         };
       });
-      dispatch(setMovies({list: moviesFromApi}));
+      dispatch(setMovies(moviesFromApi));
       console.log("Redux State:", movies);
     })
     .catch((error) => {
