@@ -1,12 +1,74 @@
 import PropTypes from 'prop-types';
+import { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import "../movie-view/movie-view.scss";
+import { useSelector } from 'react-redux';
 
-export const MovieView = ({ movie, onBackClick }) => {
+
+export const MovieView = ({ movieList, user, setUser, token }) => {
+  const { movieId } = useParams();
+  const [isFavorite, setIsFavorite] = useState(false);
+  
+  
+  
+  useEffect(() => {
+    const isFavorited = user && user.FavoriteMovies && user.FavoriteMovies.includes(movieId);
+    setIsFavorite(isFavorited)
+  }, []);
+  
+  const removeFavorite = () => {
+    fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}/movie/${movieId}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      }
+    })
+    .then((response) => {
+      if(response.ok) {
+        return response.json()
+      }
+    }). then((data) => {
+      setIsFavorite(false);
+      localStorage.setItem("user", JSON.stringify(data));
+      setUser(data);
+    })
+  };
+  
+  const addToFavorite = () => {
+    fetch(`https://sargur-movies-9fe33be3ebb3.herokuapp.com/user/${user.Email}/movie/${movieId}`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      }
+    })
+    .then((response) => {
+      if(response.ok) {
+        return response.json()
+      }
+    }). then((data) => {
+      setIsFavorite(true);
+      localStorage.setItem("user", JSON.stringify(data));
+      setUser(data);
+    })
+  }
+  
+  const movie = movieList.find((m) => m._id === movieId);
+
+  if(!movie) {
+    return <div>Movie not found</div>
+  }
+  
   return (
-    <div>
-      <div>
-          <img src={movie.ImagePath} />
-        </div>
-      <div>
+    <div className="movie-view">
+      <div className="movie-image">
+        <img src={movie.ImagePath} alt={movie.Title} />
+      </div>
+      <div className="movie-details">
+        <div>
           <span>Title: </span>
           <span>{movie.Title}</span>
         </div>
@@ -24,26 +86,23 @@ export const MovieView = ({ movie, onBackClick }) => {
         </div>
         <div>
           <span>Featured: </span>
-          <span>{movie.Featured}</span>
+          <span>{movie.Featured ? "Yes" : "No"}</span>
         </div>
-        <button onClick={onBackClick}>Back</button>
+        
+      </div>
+
+      <div className='button-container'>
+      {isFavorite ? (
+        <Button onClick={removeFavorite}>Remove from favorites</Button>
+      ) : (
+        <Button onClick={addToFavorite}>Add to favorites</Button>
+      )}
+
+      <Link to={"/"}>
+        <Button className="back-button">Back</Button>
+      </Link>
+      </div>
     </div>
   );
 };
 
-
-MovieView.propTypes = {
-  movie: PropTypes.shape({
-    ImagePath: PropTypes.string.isRequired,
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired
-    }),
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired 
-    }),
-    Featured: PropTypes.string.isRequired
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired
-};
